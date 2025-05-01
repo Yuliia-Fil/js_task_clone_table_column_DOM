@@ -3,12 +3,13 @@
 const trows = document.querySelectorAll('tr');
 
 for (const tr of trows) {
-  const secondChild = tr.querySelector('tr > :nth-child(2)');
-  const cloneSecondChild = document.createElement(`${secondChild.tagName}`);
+  const secondChild = tr.querySelector(':nth-child(2)');
+  const fourthChild = tr.querySelector(':nth-child(4)');
 
-  cloneSecondChild.textContent = secondChild.textContent;
+  if (secondChild && fourthChild) {
+    const cloneSecondChild = document.createElement(`${secondChild.tagName}`);
 
-  const fourthChild = tr.querySelector('tr > :nth-child(4)');
-
-  fourthChild.after(cloneSecondChild);
+    cloneSecondChild.textContent = secondChild.textContent;
+    fourthChild.after(cloneSecondChild);
+  }
 }
